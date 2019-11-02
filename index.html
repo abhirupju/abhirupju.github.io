@@ -76,43 +76,22 @@
           <h2 class="mb-0">Abhirup
             <span class="text-primary">Ghosh</span>
           </h2>
-          <div class="subheading mb-3">PhD Student in the School of Informatics at The University of Edinburgh</div>
-          <div class="subheading mb-2"><a href="mailto:abhirup.ghosh@ed.ac.uk">abhirup.ghosh@ed.ac.uk</a></div>
+          <div class="subheading mb-3">Research Associate at the Department of Computing, Imperial College London</div>
+          <div class="subheading mb-2"><a href="mailto:abhirup.ghosh@imperial.ac.uk">abhirup.ghosh@imperial.ac.uk</a></div>
 
-          <div class="lead mb-3"> Supervisor - <a href="http://homepages.inf.ed.ac.uk/rsarkar/">Rik Sarkar</a> </div>
-          <p class="lead mb-3">My research interest is to mine and learn high-level abstract knowledge from massive and noisy spatiotemporal sensing data in a privacy preserving way. For these purposes, I have designed mathematically solid and practically efficient algorithms inspired by topology, geometry, and statistics. My doctoral thesis is about mining patterns in mobility traces, tracking periodicity in dynamic event streams, and preserving privacy in spatiotemporal data analysis.</p>
+          <!--<div class="lead mb-3"> Supervisor - <a href="http://homepages.inf.ed.ac.uk/rsarkar/">Rik Sarkar</a> </div>-->
+          <div class="lead mb-3"> Supervisor - <a href="http://wp.doc.ic.ac.uk/theinis/">Dr. Thomas Heinis</a> </div>
           
+          <p class="lead mb-3"> I did my PhD from the School of Informatics, University of Edinburgh under <a href="http://homepages.inf.ed.ac.uk/rsarkar/">Dr. Rik Sarkar</a> in "Machine Learning and Privacy Preserving Algorithms for Spatial and Temporal Sensing" [<a href="Thesis_Abhirup.pdf">Thesis</a>]. My research interest is to design analysis and privacy-preserving algorithms using tools from topology, geometry, and statistics to infer abstract knowledge from massive and noisy sensing data.</p>
           
-          <div class="lead mb-4"> <a href="Abhirup_Ghosh.pdf"> Download Resume <i class="fa fa-cloud-download-alt"></i> </a> </div>
+          <p class="lead mb-3">At Edinburgh, I was part of <a href="http://wcms.inf.ed.ac.uk/lfcs/">LFCS</a> and <a href="https://networks.inf.ed.ac.uk/">Networks Research Group</a>. At Imperial, I am part of <a href="http://scale.doc.ic.ac.uk/">SCALE</a> lab.</p>
           
-          
-          <div align='center' class='mb-3'>
-                <!--
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/OACxnEA4Wls" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>!-->
-                
+          <!-- <div class="lead mb-4"> <a href="Abhirup_Ghosh.pdf"> Download Resume [not updated] <i class="fa fa-cloud-download-alt"></i> </a> </div> -->
+          <!--
+          <div align='center' class='mb-3'>                
                 <iframe width="550" height="350" src="https://www.youtube.com/embed/BVQysX2U1dc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <div>
-          <!--
-          <div class="resume-item d-flex flex-column flex-md-row mb-2">
-            </div>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/OACxnEA4Wls" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-        !-->
-                  
-          <!--
-          <div class="social-icons">
-            <a href="#">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="#">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="#">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-          </div>
-          !-->
+          -->
         </div>
       </section>
 
@@ -123,7 +102,6 @@
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="publications">
         <div class="my-auto">
           <h2 class="mb-4">Publications</h2>
-
 
           <div class="subheading mb-3" >
             <a href="https://scholar.google.co.uk/citations?user=JY7HrcQAAAAJ&hl=en">Google Scholar</a> </div>
@@ -175,26 +153,44 @@
             </div>
           </div>
 
+          <div class="resume-item d-flex flex-column flex-md-row mb-2">
+            <div class="resume-content mr-auto">
+              <h4 class="mb-0">Differentially Private Range Counting in Planar Graphs for Spatial Sensing</h4>
+              <div class="subheading mb-1">Abhirup Ghosh, <a href="https://www3.cs.stonybrook.edu/~jiading/">Jiaxin Ding</a>, <a href="http://homepages.inf.ed.ac.uk/rsarkar/">Rik Sarkar</a>, <a href="http://www3.cs.stonybrook.edu/~jgao/">Jie Gao</a> </div>
+              <div class="lead mb-1">Infocom 2020 (under review)</div>
+              <p>Uses computational geometry methods to represent shortest paths as compositions of pre-computed shortcuts. The algorithm achieves differential privacy for path queries by adding limited noise to the shortcuts. Using differential forms we extend this to 2D range queries on moving objects.</p>
+            </div>
+          </div>
 
 
           <div class="resume-item d-flex flex-column flex-md-row mb-2">
             <div class="resume-content mr-auto">
-              <h4 class="mb-0">Differentially Private Sensing for Distributed Asynchronous Spatiotemporal Data</h4>
+              <h4 class="mb-0">Publishing Asynchronous Event Streams with Statistical Privacy Guarantees</h4>
               <div class="subheading mb-1"><a href="https://www3.cs.stonybrook.edu/~jiading/">Jiaxin Ding</a>, Abhirup Ghosh, <a href="http://homepages.inf.ed.ac.uk/rsarkar/">Rik Sarkar</a>, <a href="http://www3.cs.stonybrook.edu/~jgao/">Jie Gao</a> </div>
-              <div class="lead mb-1">MOBIHOC 2019 (under review)</div>
-              <p>Proposes multiple differentially private algorithms to publish spatiotemporal events protecting their timing and location and support real time spatiotemporal range quries.</p>
+              <div class="lead mb-1">Infocom 2020 (under review)</div>
+              <p>Uses pufferfish privacy framework to publish time-stamps of point events and answer accurate interval quries.</p>
             </div>
           </div>
 
           <div class="resume-item d-flex flex-column flex-md-row mb-2">
             <div class="resume-content mr-auto">
-              <h4 class="mb-0">Density and privacy preserving publication of location datasets</h4>
+              <h4 class="mb-0">HYPO: Resilient Partitioning for Skewed Trajectory Datasets</h4>
+              <div class="subheading mb-1"><a href="https://www.doc.ic.ac.uk/~ge14/">Giannis Evagorou</a>, Abhirup Ghosh, <a href="http://wp.doc.ic.ac.uk/theinis/">Thomas Heinis</a></div>
+              <div class="lead mb-1">EDBT 2020 (under review)</div>
+              <p>Partitions a trajectory dataset into multiple servers in a load balanced way such that any spatiotemporal path range query can be answered accurately.</p>
+            </div>
+          </div>
+
+          <!--
+          <div class="resume-item d-flex flex-column flex-md-row mb-2">
+            <div class="resume-content mr-auto">
+              <h4 class="mb-0">Density and Privacy Preserving Publication of Location Datasets</h4>
               <div class="subheading mb-1"><a href="http://homepages.inf.ed.ac.uk/s1271067/">Panagiota Katsikouli</a>, Abhirup Ghosh, <a href="http://homepages.inf.ed.ac.uk/rsarkar/">Rik Sarkar</a></div>
               <div class="lead mb-1">Preparing for submission</div>
               <p>Proposes privacy mechanism for protecting location of events with suitable definition of differential privacy.</p>
             </div>
           </div>
-
+        -->
         <!--
           <div class="resume-item d-flex flex-column flex-md-row mb-2">
             <div class="resume-content mr-auto">
@@ -316,14 +312,14 @@
               <p class="lead">Analysis and Privacy Preserving Algorithms of Spatiotemporal sensing</p>
             </div>
             <div class="resume-date text-md-right">
-              <span class="text-primary">September 2015 - present</span>
+              <span class="text-primary">September 2015 - September 2019</span>
             </div>
           </div>
 
           <div class="resume-item d-flex flex-column flex-md-row mb-3">
             <div class="resume-content mr-auto">
               <h3 class="mb-0">Indian Institute of Technology, Bombay</h3>
-              <div class="subheading mb-3">M.Tech. in Computer Science</div>
+              <div class="subheading mb-3">M.Tech. in Computer Science and Engineering</div>
               <p class="lead">CPI: 9.49 / 10</p>
               <p class="lead">Master's thesis: Determination of Safe regions in Optimized Dynamically Updatable Programs</p>
               
