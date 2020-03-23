@@ -157,17 +157,33 @@
             <div class="resume-content mr-auto">
               <h4 class="mb-0">Differentially Private Range Counting in Planar Graphs for Spatial Sensing</h4>
               <div class="subheading mb-1">Abhirup Ghosh, <a href="https://www3.cs.stonybrook.edu/~jiading/">Jiaxin Ding</a>, <a href="http://homepages.inf.ed.ac.uk/rsarkar/">Rik Sarkar</a>, <a href="http://www3.cs.stonybrook.edu/~jgao/">Jie Gao</a> </div>
-              <div class="lead mb-1">Infocom 2020 (under review)</div>
-              <p>Uses computational geometry methods to represent shortest paths as compositions of pre-computed shortcuts. The algorithm achieves differential privacy for path queries by adding limited noise to the shortcuts. Using differential forms we extend this to 2D range queries on moving objects.</p>
+              <div class="lead mb-1">Infocom 2020 </div>
+              <p>Proposes private and efficient data structure to answer range queries along paths in a planar graph. The data structure pre-computes range counts in canonical paths (a small subset of the possible paths) using notions from planar separation theorem and random sampling. The query satisfies differential privacy and beates state of the art local differential privacy in utility. The structure supports a restricted class of paths based on shortest paths and extends to 2D range queries using differential forms.</p>
+            </div>
+
+            <div class="resume-date text-md-right">
+              <span class="text-primary">June 2020</span>
+              <ul class="list-inline dev-icons">
+                <li class="list-inline-item">
+                  <a href="https://homepages.inf.ed.ac.uk/rsarkar/papers/range-privacy.pdf"><i class="fa fa-file-pdf"></i></a>
+                </li>
+                <!--
+                <li class="list-inline-item">
+                  <a href="slides/sigspatial.pptx"><i class="fa fa-file-powerpoint"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="https://www.youtube.com/embed/OACxnEA4Wls"><i class="fab fa-youtube"></i></a>
+                </li>
+                -->
+              </ul>
             </div>
           </div>
-
 
           <div class="resume-item d-flex flex-column flex-md-row mb-2">
             <div class="resume-content mr-auto">
               <h4 class="mb-0">Publishing Asynchronous Event Streams with Statistical Privacy Guarantees</h4>
               <div class="subheading mb-1"><a href="https://www3.cs.stonybrook.edu/~jiading/">Jiaxin Ding</a>, Abhirup Ghosh, <a href="http://homepages.inf.ed.ac.uk/rsarkar/">Rik Sarkar</a>, <a href="http://www3.cs.stonybrook.edu/~jgao/">Jie Gao</a> </div>
-              <div class="lead mb-1">Infocom 2020 (under review)</div>
+              <div class="lead mb-1">Mobihoc 2020 (under review)</div>
               <p>Uses pufferfish privacy framework to publish time-stamps of point events and answer accurate interval quries.</p>
             </div>
           </div>
@@ -176,11 +192,19 @@
             <div class="resume-content mr-auto">
               <h4 class="mb-0">HYPO: Resilient Partitioning for Skewed Trajectory Datasets</h4>
               <div class="subheading mb-1"><a href="https://www.doc.ic.ac.uk/~ge14/">Giannis Evagorou</a>, Abhirup Ghosh, <a href="http://wp.doc.ic.ac.uk/theinis/">Thomas Heinis</a></div>
-              <div class="lead mb-1">EDBT 2020 (under review)</div>
+              <div class="lead mb-1">SSDBM 2020 (under review)</div>
               <p>Partitions a trajectory dataset into multiple servers in a load balanced way such that any spatiotemporal path range query can be answered accurately.</p>
             </div>
           </div>
 
+          <div class="resume-item d-flex flex-column flex-md-row mb-2">
+            <div class="resume-content mr-auto">
+              <h4 class="mb-0">Load Balanced Spatial Data Partitioning for Range Queries</h4>
+              <div class="subheading mb-1">Abhirup Ghosh, <a href="https://www.doc.ic.ac.uk/~ge14/">Giannis Evagorou</a>, <a href="http://wp.doc.ic.ac.uk/theinis/">Thomas Heinis</a></div>
+              <div class="lead mb-1">Preparing for submission</div>
+              <p>Supports efficient and parallel range queries by partitioning large spatial datasets into computing clusters. Partitioning ensures that the clusters are load balanced in in terms of data and queries. It uses random sampling and learning methods for partitioning.</p>
+            </div>
+          </div>
           <!--
           <div class="resume-item d-flex flex-column flex-md-row mb-2">
             <div class="resume-content mr-auto">
