@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MessageSquare, Send, X, Bot } from 'lucide-react';
-import { askResearchAssistant } from '../services/gemini';
+import { askResearchAssistant } from '../services/openrouter';
 import { ThemeType } from '../src/types';
 
 interface Props {
@@ -25,12 +25,14 @@ export const ResearchChat: React.FC<Props> = ({ theme }) => {
 
     const answer = await askResearchAssistant(userMsg);
 
-    // Sanitize model output: remove any wrapper markers like '<s> [OUT]' at start/end
+    // Sanitize model output: remove any wrapper markers like '<s> [OUT]' or '[/OUT] <s>' at start/end
     const sanitize = (t: string) => {
       if (!t) return t;
       return t
         .replace(/^\s*<s>\s*\[OUT\]\s*/i, '')
         .replace(/\s*<s>\s*\[OUT\]\s*$/i, '')
+        .replace(/\s*\[\/OUT\]\s*<s>\s*$/i, '')
+        .replace(/^\s*\[\/OUT\]\s*<s>\s*/i, '')
         .trim();
     };
 

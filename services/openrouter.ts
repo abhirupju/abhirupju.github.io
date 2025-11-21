@@ -2,7 +2,7 @@ import { PAPERS, PROFILE } from '../constants';
 
 const OPENROUTER_API_KEY = (import.meta as any).env.VITE_OPENROUTER_API_KEY;
 const OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1";
-const MODEL = "mistralai/mistral-7b-instruct:free";
+const MODEL = "meta-llama/llama-3.2-3b-instruct:free"; // Better free model
 
 export const askResearchAssistant = async (question: string): Promise<string> => {
   if (!OPENROUTER_API_KEY) {
