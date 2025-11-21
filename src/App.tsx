@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ThemeType, Blog } from './types';
-import { PROFILE, PAPERS, NEWS, STUDENTS, BLOGS, SHOW_BLOGS } from '../constants';
+import { PROFILE, PAPERS, NEWS, STUDENTS, BLOGS, SHOW_BLOGS, SELECTED_PAPER_IDS } from '../constants';
 import { ThemeSelector } from '../components/ThemeSelector';
 import { ResearchChat } from '../components/ResearchChat';
 import { 
@@ -26,11 +26,13 @@ export default function App() {
   const [theme, setTheme] = useState<ThemeType>(ThemeType.MODERN);
   const [activeSection, setActiveSection] = useState('home');
   const [selectedBlog, setSelectedBlog] = useState<Blog | null>(null);
+  const [showAllPublications, setShowAllPublications] = useState(false);
 
   // Smooth scroll handler
   const scrollTo = (id: string) => {
-    if (selectedBlog) {
+    if (selectedBlog || showAllPublications) {
       setSelectedBlog(null);
+      setShowAllPublications(false);
       // Wait for render to switch back to main view then scroll
       setTimeout(() => {
         doScroll(id);
@@ -180,6 +182,159 @@ export default function App() {
             </div>
           </article>
 
+        ) : showAllPublications ? (
+          /* All Publications View */
+          <div className="max-w-6xl mx-auto animate-fade-in">
+            <button 
+              onClick={() => setShowAllPublications(false)}
+              className={`mb-8 flex items-center gap-2 text-sm font-medium transition-colors ${s.accent} hover:opacity-70`}
+            >
+              <ArrowLeft size={16} /> Back to Home
+            </button>
+            
+            <div className="space-y-8">
+              <div className="text-center space-y-4">
+                <h1 className={`text-4xl md:text-5xl font-bold ${s.heading}`}>All Publications</h1>
+                <p className="text-lg opacity-70">Complete list of research papers grouped by topic</p>
+              </div>
+
+              {/* Category Navigation */}
+              {(() => {
+                // First, generate the grouped papers to get category names
+                const papersByTopic = PAPERS.reduce((acc, paper) => {
+                  let mainTopic = paper.tags[0] || 'Other';
+                  
+                  // Apply the same merging logic
+                  if (mainTopic === 'Federated Learning' || mainTopic === 'Gossip Learning') {
+                    mainTopic = 'Decentralized Learning';
+                  } else if (mainTopic === 'Digital Biomarkers' || mainTopic === 'Mobile Health') {
+                    mainTopic = 'Mobile Health';
+                  } else if (mainTopic === 'Privacy' || mainTopic === 'Differential Privacy') {
+                    mainTopic = 'Privacy';
+                  } else if (mainTopic === 'Test-Time Adaptation' || mainTopic === 'Speech') {
+                    mainTopic = 'Test-Time Adaptation';
+                  } else if (mainTopic === 'Topology' || mainTopic === 'Trajectory Data' || mainTopic === 'COVID-19') {
+                    mainTopic = 'Spatial Computing';
+                  } else if (mainTopic === 'Activity Recognition' || mainTopic === 'Time Series') {
+                    mainTopic = 'Temporal Analysis';
+                  }
+                  
+                  if (!acc[mainTopic]) acc[mainTopic] = [];
+                  acc[mainTopic].push(paper);
+                  return acc;
+                }, {} as Record<string, typeof PAPERS>);
+
+                // Filter out PhD thesis category and sort by paper count (descending)
+                const categories = Object.entries(papersByTopic)
+                  .filter(([category]) => category !== 'PhD Thesis')
+                  .sort(([, a], [, b]) => b.length - a.length)
+                  .map(([category]) => category);
+
+                return (
+                  <div className="flex flex-wrap justify-center gap-3 mb-8">
+                    {categories.map((category) => (
+                      <button
+                        key={category}
+                        onClick={() => {
+                          const element = document.getElementById(`category-${category.toLowerCase().replace(/\s+/g, '-')}`);
+                          if (element) {
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          }
+                        }}
+                        className={`px-4 py-2 text-sm font-medium rounded-full transition-all ${s.button} hover:scale-105`}
+                      >
+                        {category} ({papersByTopic[category].length})
+                      </button>
+                    ))}
+                  </div>
+                );
+              })()}
+
+              {/* Group papers by keywords/topics */}
+              {(() => {
+                const papersByTopic = PAPERS.reduce((acc, paper) => {
+                  let mainTopic = paper.tags[0] || 'Other';
+                  
+                  // Merge related topics
+                  if (mainTopic === 'Federated Learning' || mainTopic === 'Gossip Learning') {
+                    mainTopic = 'Decentralized Learning';
+                  } else if (mainTopic === 'Digital Biomarkers' || mainTopic === 'Mobile Health') {
+                    mainTopic = 'Mobile Health';
+                  } else if (mainTopic === 'Privacy' || mainTopic === 'Differential Privacy') {
+                    mainTopic = 'Privacy';
+                  } else if (mainTopic === 'Test-Time Adaptation' || mainTopic === 'Speech') {
+                    mainTopic = 'Test-Time Adaptation';
+                  } else if (mainTopic === 'Topology' || mainTopic === 'Trajectory Data' || mainTopic === 'COVID-19') {
+                    mainTopic = 'Spatial Computing';
+                  } else if (mainTopic === 'Activity Recognition' || mainTopic === 'Time Series') {
+                    mainTopic = 'Temporal Analysis';
+                  }
+                  
+                  if (!acc[mainTopic]) acc[mainTopic] = [];
+                  acc[mainTopic].push(paper);
+                  return acc;
+                }, {} as Record<string, typeof PAPERS>);
+
+                return Object.entries(papersByTopic)
+                  .filter(([topic]) => topic !== 'PhD Thesis')
+                  .map(([topic, papers], index) => (
+                  <div key={topic} id={`category-${topic.toLowerCase().replace(/\s+/g, '-')}`} className="space-y-4 scroll-mt-20">
+                    <div className="flex items-center justify-between border-b pb-2 border-gray-200 dark:border-gray-800">
+                      <h2 className={`text-2xl font-bold ${s.heading}`}>
+                        {topic.charAt(0).toUpperCase() + topic.slice(1)}
+                      </h2>
+                      {index > 0 && (
+                        <button
+                          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                          className={`px-3 py-1 text-sm font-medium rounded-full transition-all ${s.button} hover:scale-105 flex items-center gap-1`}
+                        >
+                          ↑ Back to Top
+                        </button>
+                      )}
+                    </div>
+                    <div className="grid grid-cols-1 gap-4">
+                      {papers.map((paper) => (
+                        <div key={paper.id} className={`p-6 transition-all ${s.card} ${theme === ThemeType.MINIMALIST ? 'border-l-4 border-l-stone-800 pl-6' : 'rounded-2xl'}`}>
+                          <div className="flex flex-col md:flex-row justify-between gap-4 mb-3">
+                             <h4 className={`text-lg md:text-xl font-bold leading-tight ${theme === ThemeType.CYBER ? 'text-emerald-300' : 'text-gray-900'}`}>
+                               {paper.title}
+                             </h4>
+                             <span className={`whitespace-nowrap px-3 py-1 text-xs font-bold rounded uppercase tracking-wider self-start ${theme === ThemeType.CYBER ? 'bg-emerald-900 text-emerald-400' : 'bg-gray-100 text-gray-600'}`}>
+                               {paper.venue} {paper.year}
+                             </span>
+                          </div>
+                          
+                          <div className={`mb-3 text-sm font-medium ${s.accent}`}>
+                            {paper.authors.map((auth, i) => (
+                               <span key={i} className={auth.includes(PROFILE.name) ? "font-bold underline decoration-2 underline-offset-4" : ""}>
+                                 {auth}{i < paper.authors.length - 1 ? ", " : ""}
+                               </span>
+                            ))}
+                          </div>
+
+                          <p className={`text-sm leading-relaxed mb-4 opacity-90`}>
+                            {paper.abstract}
+                          </p>
+                          
+                          <div className="flex items-center justify-between">
+                            <div className="flex gap-2">
+                                {paper.tags.map(tag => (
+                                    <span key={tag} className="text-xs opacity-60">#{tag}</span>
+                                ))}
+                            </div>
+                            <a href={paper.link} className={`text-sm font-semibold flex items-center gap-1 hover:opacity-70 ${s.accent}`}>
+                              PDF <ChevronRight size={14} />
+                            </a>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ));
+              })()}
+            </div>
+          </div>
+
         ) : (
           /* Standard Single Page View */
           <>
@@ -266,13 +421,24 @@ export default function App() {
               <div className="space-y-8">
                 <div className="flex items-baseline justify-between border-b pb-4 border-gray-200 dark:border-gray-800">
                   <h3 className={`text-3xl font-bold ${s.heading}`}>Selected Publications</h3>
-                  <a href={PROFILE.scholarLink} className={`text-sm flex items-center gap-1 hover:underline ${s.accent}`}>
-                    View all on Scholar <ExternalLink size={14} />
-                  </a>
+                  <div className="flex items-center gap-4">
+                    <button 
+                      onClick={() => {
+                        setShowAllPublications(true);
+                        setTimeout(() => window.scrollTo({top: 0, behavior: 'smooth'}), 0);
+                      }}
+                      className={`text-sm flex items-center gap-1 hover:underline ${s.accent}`}
+                    >
+                      All Publications <ChevronRight size={14} />
+                    </button>
+                    <a href={PROFILE.scholarLink} className={`text-sm flex items-center gap-1 hover:underline ${s.accent}`}>
+                      View all on Scholar <ExternalLink size={14} />
+                    </a>
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-1 gap-4">
-                  {PAPERS.map((paper) => (
+                  {PAPERS.filter(paper => SELECTED_PAPER_IDS.includes(paper.id)).map((paper) => (
                     <div key={paper.id} className={`p-6 transition-all ${s.card} ${theme === ThemeType.MINIMALIST ? 'border-l-4 border-l-stone-800 pl-6' : 'rounded-2xl'}`}>
                       <div className="flex flex-col md:flex-row justify-between gap-4 mb-3">
                          <h4 className={`text-lg md:text-xl font-bold leading-tight ${theme === ThemeType.CYBER ? 'text-emerald-300' : 'text-gray-900'}`}>

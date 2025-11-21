@@ -15,6 +15,28 @@ export interface Paper {
   tags: string[];
 }
 
+// Extended paper information for LLM context (not displayed on website)
+export interface DetailedPaper {
+  id: string;
+  title: string;
+  authors: string[];
+  venue: string;
+  year: number;
+  abstract: string;
+  fullAbstract?: string; // More detailed abstract if available
+  link: string;
+  pdfLink?: string;
+  tags: string[];
+  keywords?: string[];
+  methodology?: string;
+  keyFindings?: string[];
+  relatedWork?: string;
+  futureWork?: string;
+  citations?: number;
+  doi?: string;
+  bibtex?: string;
+}
+
 export interface NewsItem {
   id: string;
   date: string;
