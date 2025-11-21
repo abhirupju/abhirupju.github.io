@@ -318,7 +318,7 @@ export default function App() {
                           
                           <div className="flex items-center justify-between">
                             <div className="flex gap-2">
-                                {paper.tags.map(tag => (
+                                {paper.tags.slice(0, 2).map(tag => (
                                     <span key={tag} className="text-xs opacity-60">#{tag}</span>
                                 ))}
                             </div>
@@ -359,7 +359,6 @@ export default function App() {
                         {PROFILE.title}
                       </p>
                       <div className={`flex items-center justify-center md:justify-start gap-2 ${s.accent}`}>
-                         <MapPin size={18} />
                          <span>{PROFILE.affiliation}</span>
                       </div>
                       
@@ -420,7 +419,7 @@ export default function App() {
             <section id="research" className="py-8 max-w-6xl mx-auto">
               <div className="space-y-8">
                 <div className="flex items-baseline justify-between border-b pb-4 border-gray-200 dark:border-gray-800">
-                  <h3 className={`text-3xl font-bold ${s.heading}`}>Selected Publications</h3>
+                  <h3 className={`text-2xl md:text-3xl font-bold ${s.heading}`}>Selected Publications</h3>
                   <div className="flex items-center gap-4">
                     <button 
                       onClick={() => {
@@ -463,7 +462,7 @@ export default function App() {
                       
                       <div className="flex items-center justify-between">
                         <div className="flex gap-2">
-                            {paper.tags.map(tag => (
+                            {paper.tags.slice(0, 2).map(tag => (
                                 <span key={tag} className="text-xs opacity-60">#{tag}</span>
                             ))}
                         </div>
