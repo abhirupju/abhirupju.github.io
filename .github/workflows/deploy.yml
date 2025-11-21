@@ -27,11 +27,20 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Clean and Build
         env:
           # Optional: provide OpenRouter API key as a Vite env var if you need the assistant to work at build time
           VITE_OPENROUTER_API_KEY: ${{ secrets.VITE_OPENROUTER_API_KEY }}
-        run: npm run build
+        run: |
+          rm -rf dist
+          npm run build
+
+      - name: Verify build output
+        run: |
+          echo "Contents of dist directory:"
+          ls -la dist/
+          echo "Contents of dist/index.html:"
+          head -20 dist/index.html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
