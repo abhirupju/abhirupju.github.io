@@ -124,14 +124,49 @@ export default function App() {
           <h1 className={`text-xl font-bold ${s.heading} cursor-pointer`} onClick={() => scrollTo('home')}>
             {PROFILE.name}
           </h1>
-          <div className="hidden md:flex gap-2">
-            <NavLink to="home" icon={BookOpen} label="About" />
-            <NavLink to="research" icon={Sparkles} label="Research" />
-            <NavLink to="students" icon={Users} label="Students" />
-            <NavLink to="background" icon={Clock} label="Experiences" />
-            {SHOW_BLOGS && <NavLink to="blogs" icon={PenTool} label="Blogs" />}
-            <NavLink to="teaching" icon={GraduationCap} label="Teaching" />
-            <NavLink to="contact" icon={Mail} label="Contact" />
+          <div className="flex items-center gap-4">
+            <div className="hidden md:flex gap-2">
+              <NavLink to="home" icon={BookOpen} label="About" />
+              <NavLink to="research" icon={Sparkles} label="Research" />
+              <NavLink to="students" icon={Users} label="Students" />
+              <NavLink to="background" icon={Clock} label="Experiences" />
+              {SHOW_BLOGS && <NavLink to="blogs" icon={PenTool} label="Blogs" />}
+              <NavLink to="teaching" icon={GraduationCap} label="Teaching" />
+              <NavLink to="contact" icon={Mail} label="Contact" />
+            </div>
+            
+            {/* Theme Toggle Button */}
+            <div className="relative">
+              <button
+                onClick={() => {
+                  const themes = [ThemeType.MODERN, ThemeType.CYBER, ThemeType.MINIMALIST];
+                  const currentIndex = themes.indexOf(theme);
+                  const nextIndex = (currentIndex + 1) % themes.length;
+                  setTheme(themes[nextIndex]);
+                }}
+                className={`p-2 rounded-full transition-all hover:scale-110 ${s.button} flex items-center gap-1`}
+                title="Toggle Theme"
+              >
+                {theme === ThemeType.MODERN && (
+                  <>
+                    <span className="text-xs font-medium hidden sm:inline">Modern</span>
+                    <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+                  </>
+                )}
+                {theme === ThemeType.CYBER && (
+                  <>
+                    <span className="text-xs font-medium hidden sm:inline">Cyber</span>
+                    <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
+                  </>
+                )}
+                {theme === ThemeType.MINIMALIST && (
+                  <>
+                    <span className="text-xs font-medium hidden sm:inline">Minimal</span>
+                    <div className="w-3 h-3 rounded-full bg-stone-800"></div>
+                  </>
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </nav>
