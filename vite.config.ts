@@ -6,7 +6,7 @@ export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
       // Use relative paths so the built site works correctly when served from GitHub Pages
-      base: '/abhirupju.github.io/',
+      base: './',
       build: {
         rollupOptions: {
           input: {
