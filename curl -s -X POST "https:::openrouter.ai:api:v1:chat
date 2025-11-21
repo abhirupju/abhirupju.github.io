@@ -1,0 +1,6 @@
+curl -s -X POST "https://openrouter.ai/api/v1/chat/completions" \
+  -H "Authorization: Bearer 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" \
+  -H "Content-Type: application/json" \
+  -H "HTTP-Referer: https://github.com" \
+  -H "X-Title: Academic Portfolio" \
+  -d '{"model":"mistralai/mistral-7b-instruct:free","messages":[{"role":"user","content":"Hello"}]}' | jq .
