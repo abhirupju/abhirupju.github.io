@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://abhirupju.github.io/sitemap.xml
+
+# Allow search engines to crawl all pages
+Allow: /index.html
+Allow: /imgs/
+Allow: /src/
+Allow: /components/
+Allow: /services/
+
+# Disallow any build or development files
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /dist/
