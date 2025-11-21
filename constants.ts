@@ -1,4 +1,4 @@
-import { Paper, Profile, NewsItem, Student, Blog } from './types';
+import { Paper, Profile, NewsItem, Student, Blog } from './src/types';
 
 export const PROFILE: Profile = {
   name: "Abhirup Ghosh",

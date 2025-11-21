@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeType } from '../types';
+import { ThemeType } from '../src/types';
 import { Palette, Monitor, Terminal } from 'lucide-react';
 
 interface Props {

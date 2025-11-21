@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MessageSquare, Send, X, Bot } from 'lucide-react';
 import { askResearchAssistant } from '../services/gemini';
-import { ThemeType } from '../types';
+import { ThemeType } from '../src/types';
 
 interface Props {
   theme: ThemeType;

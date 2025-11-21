@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { ThemeType, Blog } from './types';
-import { PROFILE, PAPERS, NEWS, STUDENTS, BLOGS, SHOW_BLOGS } from './constants';
-import { ThemeSelector } from './components/ThemeSelector';
-import { ResearchChat } from './components/ResearchChat';
+import { PROFILE, PAPERS, NEWS, STUDENTS, BLOGS, SHOW_BLOGS } from '../constants';
+import { ThemeSelector } from '../components/ThemeSelector';
+import { ResearchChat } from '../components/ResearchChat';
 import { 
   BookOpen, 
   GraduationCap, 
