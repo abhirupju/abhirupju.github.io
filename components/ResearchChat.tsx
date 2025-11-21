@@ -3,6 +3,34 @@ import { MessageSquare, Send, X, Bot } from 'lucide-react';
 import { askResearchAssistant } from '../services/openrouter';
 import { ThemeType } from '../src/types';
 
+// Simple markdown renderer for basic formatting
+const renderMarkdown = (text: string, theme: ThemeType) => {
+  if (!text) return text;
+  
+  // Theme-aware code styling
+  const codeClass = theme === ThemeType.CYBER 
+    ? 'bg-slate-800 text-emerald-300 px-1 py-0.5 rounded text-xs font-mono'
+    : theme === ThemeType.MINIMALIST
+    ? 'bg-stone-100 text-stone-800 px-1 py-0.5 rounded text-xs font-mono'
+    : 'bg-gray-100 text-gray-800 px-1 py-0.5 rounded text-xs font-mono';
+  
+  return text
+    // Bold text: **text** or __text__
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/__(.*?)__/g, '<strong>$1</strong>')
+    // Italic text: *text* or _text_ (but not at start of line for lists)
+    .replace(/(?<!^|\n)\*(.*?)\*/g, '<em>$1</em>')
+    .replace(/(?<!^|\n)_(.*?)_/g, '<em>$1</em>')
+    // Code blocks: `code`
+    .replace(/`(.*?)`/g, `<code class="${codeClass}">$1</code>`)
+    // Simple bullet lists: lines starting with - or *
+    .replace(/^[\-\*]\s+(.+)$/gm, '<li class="ml-4">• $1</li>')
+    // Numbered lists: lines starting with numbers
+    .replace(/^\d+\.\s+(.+)$/gm, '<li class="ml-4">$1</li>')
+    // Line breaks
+    .replace(/\n/g, '<br />');
+};
+
 interface Props {
   theme: ThemeType;
 }
@@ -105,7 +133,11 @@ export const ResearchChat: React.FC<Props> = ({ theme }) => {
             {messages.map((msg, idx) => (
               <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[80%] p-3 rounded-lg text-sm ${msg.role === 'user' ? styles.userMsg : styles.aiMsg}`}>
-                  {msg.text}
+                  {msg.role === 'ai' ? (
+                    <div dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.text, theme) }} />
+                  ) : (
+                    msg.text
+                  )}
                 </div>
               </div>
             ))}
