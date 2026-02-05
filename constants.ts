@@ -44,8 +44,8 @@ export const PAPERS: Paper[] = [
     id: "p7",
     title: "NEO: No-Optimization Test-Time Adaptation through Latent Re-Centering",
     authors: ["Alexander Murphy", "Michal Danilowski", "Soumyajit Chatterjee", "Abhirup Ghosh"],
-    venue: "arXiv preprint",
-    year: 2025,
+    venue: "accepted in ICLR",
+    year: 2026,
     abstract: "NEO presents a hyperparameter-free test-time adaptation method through latent re-centering, reducing inference time by 63% and memory usage by 9% on edge devices.",
     link: "https://arxiv.org/abs/2510.05635",
     tags: ["Test-Time Adaptation", "Computer Vision", "Efficient TTA"]
@@ -233,6 +233,12 @@ export const PAPERS: Paper[] = [
 ];
 
 export const NEWS: NewsItem[] = [
+  {
+    id: "n0",
+    date: "Feb 2026",
+    title: "NEO accepted at ICLR 2026",
+    content: "Big congratulations to Alex Murphy who did this as part of his internship.",
+  },
   {
     id: "n1",
     date: "Nov 2025",
