@@ -17,7 +17,7 @@ export const PROFILE: Profile = {
 export const SHOW_BLOGS = false;
 
 // Configuration for which papers to show in the selected publications section
-export const SELECTED_PAPER_IDS = ["p1", "p2", "p6", "p4", "p5"];
+export const SELECTED_PAPER_IDS = ["p7", "p1", "p2", "p6", "p4", "p5"];
 
 export const PAPERS: Paper[] = [
   {
